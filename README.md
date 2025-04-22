@@ -1,2 +1,2 @@
-# FIS-Sugeno
- FIS Sugneo for embedded control systems
+# FIS Sugeno
+ Fuzzy inference system (Sugneo Type I) library for embedded control systems
