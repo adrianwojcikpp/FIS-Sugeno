@@ -17,7 +17,7 @@
   
 /* Public typedef ------------------------------------------------------------*/
 typedef float (*FIS_MF_Eval)(float input, void* params);
-typedef float (*FIS_ConsequentFunction)(float* inputs);
+typedef float (*FIS_ConsequentFunction)(const float* inputs);
 
 typedef enum 
 {
@@ -36,10 +36,14 @@ typedef struct
 typedef struct 
 {
     int* mf_indices;                    
-    int input_count;
     FIS_ConsequentFunction consequent;  
     FIS_LogicType logic_type;               
 } FIS_Rule;
+
+typedef struct {
+    float weight;  
+    float output; 
+} FIS_RuleOutput;
 
 typedef struct 
 {
@@ -50,18 +54,18 @@ typedef struct
     int num_rules;
 } FIS_System;
 
-    /* Membership function types */
-    typedef struct 
-    {
-        float a; // Left foot
-        float b; // Peak
-        float c; // Right foot
-    } FIS_MF_TriangularParams;
+/* Public typedef - membership functions parameters types --------------------*/
+typedef struct 
+{
+    float a; // Left foot
+    float b; // Peak
+    float c; // Right foot
+} FIS_MF_TriangularParams;
 
 /* Public define -------------------------------------------------------------*/
 #define FIS_MAX_INPUTS     6
-#define FIS_MAX_MFS        5
-#define FIS_MAX_RULES     10
+#define FIS_MAX_MFS        3
+#define FIS_MAX_RULES      3
 
 /* Public macro --------------------------------------------------------------*/
 #define __FIS_MF_CreateTriangular(name, a_, b_, c_)                              \
@@ -70,20 +74,72 @@ typedef struct
         .eval = FIS_MF_TriangularEval,                                           \
         .params = &name##_params                                                 \
     };
-  
-/* Public variables ----------------------------------------------------------*/
+
+#define __FIS_MF_CreateTriangular_Static(name, a_, b_, c_)                              \
+    static FIS_MF_TriangularParams name##_params = { .a = (a_), .b = (b_), .c = (c_) }; \
+    static FIS_MembershipFunction name = {                                              \
+        .eval = FIS_MF_TriangularEval,                                                  \
+        .params = &name##_params                                                        \
+    };  
   
 /* Public function prototypes ------------------------------------------------*/
-float FIS_EvaluateMemberFunction(float input, FIS_MembershipFunction* mf);
+/**
+ * @brief Evaluates a single membership function for a given input value.
+ *
+ * @param[in] input     Input value to be evaluated.
+ * @param[in] mf        Pointer to the membership function definition.
+ * @return              Degree of membership (between 0.0 and 1.0).
+ */
+float FIS_EvaluateMemberFunction(float input, const FIS_MembershipFunction* mf);
 
-void FIS_FuzzifyInput(float input, FIS_MembershipFunction** mf_array, int mf_count, float* output_degrees);
+/**
+ * @brief Computes the degree of membership for all membership functions
+ *        associated with a single input.
+ *
+ * @param[in]  input            Input value to be fuzzified.
+ * @param[in]  mf_array         Array of pointers to membership functions.
+ * @param[in]  mf_count         Number of membership functions for the input.
+ * @param[out] input_degrees   Output array to store calculated degrees of membership.
+ */
+void FIS_FuzzifyInput(float input, FIS_MembershipFunction** mf_array, int mf_count, float* input_degrees);
 
+/**
+ * @brief Evaluates a single fuzzy rule, including computing rule weight and weighted output.
+ *
+ * @param[in]  rule              Pointer to the rule to be evaluated.
+ * @param[in]  input_degrees     2D array of fuzzified degrees for all inputs and their MFs.
+ * @param[in]  inputs            Original crisp input values.
+ * @param[in]  input_count       Number of inputs in the system.
+ * @return                       Struct containing rule weight and weighted output.
+ */
+FIS_RuleOutput FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS], const float* inputs, int input_count);
+
+/**
+ * @brief Performs weighted average defuzzification on the rule outputs.
+ *
+ * @param[in] rule_output   Array of rule outputs containing weights and weighted values.
+ * @param[in] rule_count    Total number of evaluated rules.
+ * @return                  Defuzzified crisp output value.
+ */
+float FIS_DefuzzifyOutput(FIS_RuleOutput* rule_output, int rule_count);
+
+/**
+ * @brief Main evaluation function for a complete Sugeno-type fuzzy inference system.
+ *
+ * @param[in] fis       Pointer to the FIS system definition.
+ * @param[in] inputs    Array of crisp input values.
+ * @return              Final crisp output after inference and defuzzification.
+ */
+float FIS_Evaluate(FIS_System* fis, float* inputs);
+
+/* Public function prototypes - membership functions evaluation --------------*/
+/**
+ * @brief Triangular membership function evaluation implementation.
+ *
+ * @param[in] input     Input value to be evaluated.
+ * @param[in] params    Pointer to array of 3 floats: {a, b, c} for triangle shape.
+ * @return              Degree of membership (between 0.0 and 1.0).
+ */
 float FIS_MF_TriangularEval(float input, void* params);
-
-float FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS], float* inputs, float* weight_out);
-
-float FIS_DefuzzifyOutput(float* wz, float* w, int w_count);
-
-float FIS_Evaluate(FIS_System* fis, float* inputs);   
-
+  
 #endif /* INC_FIS_SUGENO_H_ */

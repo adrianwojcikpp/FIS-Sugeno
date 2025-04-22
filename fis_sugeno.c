@@ -4,7 +4,7 @@
   * @author  	: AW		Adrian.Wojcik@put.poznan.pl
   * @version 	: 1.0.0
   * @date    	: Feb 19, 2025
-  * @brief   	: Takagi-Sugeno-Kang (Sugneo) Fuzzy Inference System for 
+  * @brief   	: Takagi-Sugeno-Kang (Sugeno) Fuzzy Inference System for 
   *               embedded control systems
   *
   ******************************************************************************
@@ -14,24 +14,8 @@
 #include <stddef.h>
 #include "fis_sugeno.h"
 
-/* Private typedef -----------------------------------------------------------*/
-
-/* Private define ------------------------------------------------------------*/
-
-/* Private macro -------------------------------------------------------------*/
-
-/* Private variables ---------------------------------------------------------*/
-
-/* Public variables ----------------------------------------------------------*/
-
-/* Private function prototypes -----------------------------------------------*/
-
-/* Public function prototypes ------------------------------------------------*/
-
-/* Private functions ---------------------------------------------------------*/
-
 /* Public functions ----------------------------------------------------------*/
-float FIS_EvaluateMemberFunction(float input, FIS_MembershipFunction* mf) 
+float FIS_EvaluateMemberFunction(float input, const FIS_MembershipFunction* mf) 
 {
     if(mf != NULL)
         return mf->eval(input, mf->params);
@@ -39,10 +23,10 @@ float FIS_EvaluateMemberFunction(float input, FIS_MembershipFunction* mf)
         return -1.0f;
 }
 
-void FIS_FuzzifyInput(float input, FIS_MembershipFunction** mf_array, int mf_count, float* output_degrees) 
+void FIS_FuzzifyInput(float input, FIS_MembershipFunction** mf_array, int mf_count, float* input_degrees) 
 {
     for (int i = 0; i < mf_count; ++i) {
-        output_degrees[i] = FIS_EvaluateMemberFunction(input, mf_array[i]);
+        input_degrees[i] = FIS_EvaluateMemberFunction(input, mf_array[i]);
     }
 }
 
@@ -68,7 +52,7 @@ float FIS_MF_TriangularEval(float input, void* params)
     return output;
 }
 
-float FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS], float* inputs, float* weight_out) 
+FIS_RuleOutput FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS], const float* inputs, int input_count) 
 {
     float weight;
 
@@ -81,7 +65,7 @@ float FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_M
     else if (rule->logic_type == FIS_OR_PROB_SUM)
         weight = 0.0f;
 
-    for (int i = 0; i < rule->input_count; ++i) 
+    for (int i = 0; i < input_count; ++i) 
     {
         int mf_index = rule->mf_indices[i];
         if(mf_index < 0)
@@ -89,7 +73,8 @@ float FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_M
 
         float degree = input_degrees[i][mf_index];
 
-        switch (rule->logic_type) {
+        switch (rule->logic_type) 
+        {
             case FIS_AND_PRODUCT:
                 weight *= degree;
                 break;
@@ -108,19 +93,20 @@ float FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_M
     }
 
     float output = rule->consequent(inputs);
-    *weight_out = weight;
-    return weight * output;
+    FIS_RuleOutput rule_out = {.output = weight * output, .weight = weight };
+    return rule_out;
 }
 
-float FIS_DefuzzifyOutput(float* wz, float* w, int w_count)
+float FIS_DefuzzifyOutput(FIS_RuleOutput* rule_output, int rule_count)
 {
     float numerator = 0.0f;
     float denominator = 0.0f;
 
-    for (int r = 0; r < w_count; ++r) 
+    // weight average method
+    for (int r = 0; r < rule_count; ++r) 
     {
-        numerator += wz[r];
-        denominator += w[r];
+        numerator += rule_output[r].output;
+        denominator += rule_output[r].weight;
     } 
     
     if (denominator == 0.0f)
@@ -129,37 +115,22 @@ float FIS_DefuzzifyOutput(float* wz, float* w, int w_count)
     return numerator / denominator;
 }
 
-
-
 float FIS_Evaluate(FIS_System* fis, float* inputs) 
 {
+    // Arrays to accumulate degrees of membership
     static float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS];
 
     // Fuzzification step for all inputs
     for (int i = 0; i < fis->num_inputs; ++i) 
-    {
-        FIS_FuzzifyInput(
-            inputs[i],                         // input value
-            fis->input_mfs[i],                 // array of MFs for this input
-            fis->num_mfs_per_input[i],         // number of MFs
-            input_degrees[i]                   // output degrees
-        );
-    }
+        FIS_FuzzifyInput(inputs[i], fis->input_mfs[i], fis->num_mfs_per_input[i], input_degrees[i]);
 
     // Arrays to accumulate weighted outputs and weights
-    float weighted_outputs[FIS_MAX_RULES];
-    float weights[FIS_MAX_RULES];
+    FIS_RuleOutput rule_output[FIS_MAX_RULES];
 
     // Evaluate each rule
-    for (int r = 0; r < fis->num_rules; ++r) {
-        weighted_outputs[r] = FIS_EvaluateRule(
-            &fis->rules[r],
-            input_degrees,
-            inputs,
-            &weights[r]
-        );
-    }
+    for (int r = 0; r < fis->num_rules; ++r)
+        rule_output[r] = FIS_EvaluateRule(&fis->rules[r], input_degrees, inputs, fis->num_inputs);
 
     // Defuzzify final result
-    return FIS_DefuzzifyOutput(weighted_outputs, weights, fis->num_rules);
+    return FIS_DefuzzifyOutput(rule_output, fis->num_rules);
 }
