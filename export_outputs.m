@@ -1,11 +1,11 @@
 % Assume you have a 1D array called 'arr'
 arr = u.Data(:, 1);  % Example: take the first column from ts.Data
-filename = 'output_array.c';
+filename = 'test2_output_array.c';
 
 fid = fopen(filename, 'w');
 
 % Write the array declaration
-fprintf(fid, 'float outputs[2000] = {\n');
+fprintf(fid, 'float test2_outputs[2000] = {\n');
 
 % Write the values with formatting
 for i = 1:2000

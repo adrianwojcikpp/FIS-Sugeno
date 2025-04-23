@@ -55,12 +55,31 @@ typedef struct
 } FIS_System;
 
 /* Public typedef - membership functions parameters types --------------------*/
+
+/**
+ * @brief Parameters for a triangular membership function.
+ *        Represents points a, b, c where:
+ *        a <= b <= c
+ */
 typedef struct 
 {
     float a; // Left foot
     float b; // Peak
     float c; // Right foot
 } FIS_MF_TriangularParams;
+
+/**
+ * @brief Parameters for a trapezoidal membership function.
+ *        Represents points a, b, c, d where:
+ *        a <= b <= c <= d
+ */
+typedef struct {
+    float a;
+    float b;
+    float c;
+    float d;
+} FIS_MF_TrapezoidalParams;
+
 
 /* Public define -------------------------------------------------------------*/
 #define FIS_MAX_INPUTS     6
@@ -82,6 +101,20 @@ typedef struct
         .params = &name##_params                                                        \
     };  
   
+#define __FIS_MF_CreateTrapezoidal(name, a_, b_, c_, d_)                                         \
+    FIS_MF_TrapezoidalParams name##_params = { .a = (a_), .b = (b_), .c = (c_), .d = (d_) }; \
+    FIS_MembershipFunction name = {                                                          \
+        .eval = FIS_MF_TrapezoidalEval,                                                      \
+        .params = &name##_params,                                                            \
+    };
+
+#define __FIS_MF_CreateTrapezoidal_Static(name, a_, b_, c_, d_)                                         \
+    static FIS_MF_TrapezoidalParams name##_params = { .a = (a_), .b = (b_), .c = (c_), .d = (d_) }; \
+    static FIS_MembershipFunction name = {                                                          \
+        .eval = FIS_MF_TrapezoidalEval,                                                             \
+        .params = &name##_params,                                                                   \
+    };
+
 /* Public function prototypes ------------------------------------------------*/
 /**
  * @brief Evaluates a single membership function for a given input value.
@@ -141,5 +174,14 @@ float FIS_Evaluate(FIS_System* fis, float* inputs);
  * @return              Degree of membership (between 0.0 and 1.0).
  */
 float FIS_MF_TriangularEval(float input, void* params);
+
+/**
+ * @brief Evaluates a trapezoidal membership function.
+ *
+ * @param[in] input   Input value to evaluate.
+ * @param[in] params  Pointer to FIS_MF_TrapezoidalParams structure.
+ * @return            Degree of membership (between 0.0 and 1.0).
+ */
+float FIS_MF_TrapezoidalEval(float input, void* params);
   
 #endif /* INC_FIS_SUGENO_H_ */

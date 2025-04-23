@@ -27,6 +27,7 @@
   
   /* Public function prototypes ------------------------------------------------*/
   void FIS_InvertedPendulumController_Init(FIS_System** fis);
+  void FIS_PMSM_SpeedController_Init(FIS_System** fis);
 
   #endif /* INC_FIS_SUGENO_CONFIG_H_ */
   

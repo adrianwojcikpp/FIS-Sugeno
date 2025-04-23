@@ -30,28 +30,6 @@ void FIS_FuzzifyInput(float input, FIS_MembershipFunction** mf_array, int mf_cou
     }
 }
 
-float FIS_MF_TriangularEval(float input, void* params)
-{
-    FIS_MF_TriangularParams* p = (FIS_MF_TriangularParams*)params;
-    float output = 0.0;
-
-    if (input < p->a || input > p->c)
-        output = 0.0f;
-    else if (input == p->b)
-        output =1.0f;
-    else if (input < p->b)
-        output = (input - p->a) / (p->b - p->a);
-    else // input > p->b
-        output = (p->c - input) / (p->c - p->b);
-
-    if (output > 1.0f)
-        output = 1.0f;
-    else if (output < 0.0f)
-        output = 0.0f;
-
-    return output;
-}
-
 FIS_RuleOutput FIS_EvaluateRule(FIS_Rule* rule, float input_degrees[FIS_MAX_INPUTS][FIS_MAX_MFS], const float* inputs, int input_count) 
 {
     float weight;
@@ -133,4 +111,49 @@ float FIS_Evaluate(FIS_System* fis, float* inputs)
 
     // Defuzzify final result
     return FIS_DefuzzifyOutput(rule_output, fis->num_rules);
+}
+
+/* Public function  - membership functions evaluation ------------------------*/
+float FIS_MF_TriangularEval(float input, void* params)
+{
+    FIS_MF_TriangularParams* p = (FIS_MF_TriangularParams*)params;
+    float output = 0.0;
+
+    if (input < p->a || input > p->c)
+        output = 0.0f;
+    else if (input == p->b)
+        output =1.0f;
+    else if (input < p->b)
+        output = (input - p->a) / (p->b - p->a);
+    else // input > p->b
+        output = (p->c - input) / (p->c - p->b);
+
+    if (output > 1.0f)
+        output = 1.0f;
+    else if (output < 0.0f)
+        output = 0.0f;
+
+    return output;
+}
+
+float FIS_MF_TrapezoidalEval(float input, void* params)
+{
+    FIS_MF_TrapezoidalParams* p = (FIS_MF_TrapezoidalParams*)params;
+    float output = 0.0;
+
+    if (input < p->a || input > p->d)
+         output = 0.0f;
+    else if (input >= p->b && input <= p->c)
+        output = 1.0f;
+    else if (input > p->a && input < p->b)
+        output = (input - p->a) / (p->b - p->a);
+    else // input > p->c && input < p->d
+        output = (p->d - input) / (p->d - p->c);
+
+    if (output > 1.0f)
+        output = 1.0f;
+    else if (output < 0.0f)
+        output = 0.0f;
+
+    return output;
 }
