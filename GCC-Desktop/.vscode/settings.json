@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "defuzzification",
+        "Defuzzified",
+        "Defuzzify",
+        "Fuzzification",
+        "fuzzified",
+        "Fuzzify",
+        "Kang",
+        "pmsm",
+        "SUGENO",
+        "Takagi"
+    ],
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "stddef.h": "c"
+    }
+}

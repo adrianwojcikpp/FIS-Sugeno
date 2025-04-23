@@ -1,0 +1,28 @@
+15:29:30 **** Incremental Build of configuration Debug for project GCC-STM32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Components/Src/fis_sugeno.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I"C:/PP/Praca naukowa/SENE2025/FIS-Sugeno/GCC-STM32/Components/Inc" -Ofast -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Components/Src/fis_sugeno.d" -MT"Components/Src/fis_sugeno.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Components/Src/fis_sugeno.o"
+arm-none-eabi-gcc -o "GCC-STM32.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\PP\Praca naukowa\SENE2025\FIS-Sugeno\GCC-STM32\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GCC-STM32.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: GCC-STM32.elf
+ 
+arm-none-eabi-size  GCC-STM32.elf 
+arm-none-eabi-objdump -h -S GCC-STM32.elf  > "GCC-STM32.list"
+   text	   data	    bss	    dec	    hex	filename
+  10420	   5048	   1784	  17252	   4364	GCC-STM32.elf
+Finished building: default.size.stdout
+ 
+Finished building: GCC-STM32.list
+ 
+15:29:35 **** Incremental Build of configuration Debug for project GCC-STM32 ****
+make -j12 all 
+arm-none-eabi-gcc "../Components/Src/fis_sugeno.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I"C:/PP/Praca naukowa/SENE2025/FIS-Sugeno/GCC-STM32/Components/Inc" -Ofast -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Components/Src/fis_sugeno.d" -MT"Components/Src/fis_sugeno.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Components/Src/fis_sugeno.o"
+arm-none-eabi-gcc -o "GCC-STM32.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\PP\Praca naukowa\SENE2025\FIS-Sugeno\GCC-STM32\STM32F746ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GCC-STM32.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: GCC-STM32.elf
+ 
+arm-none-eabi-size  GCC-STM32.elf 
+arm-none-eabi-objdump -h -S GCC-STM32.elf  > "GCC-STM32.list"
+   text	   data	    bss	    dec	    hex	filename
+  10420	   5048	   1784	  17252	   4364	GCC-STM32.elf
+Finished building: default.size.stdout
+ 
+Finished building: GCC-STM32.list
+ 

@@ -1,0 +1,79 @@
+15:10:04 **** Incremental Build of configuration Debug for project FIS_Sugeno_NUCLEO_Test ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o"
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c:570:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\cc0SDvd2.s: No space left on device
+  570 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c:511:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccqmYrv4.s: No space left on device
+  511 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c:1298:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\cciu5106.s: No space left on device
+ 1298 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.c:529:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccQH0vAb.s: No space left on device
+  529 | }
+      | ^
+compilation terminated.
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c:294:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccSazpr9.s: No space left on device
+  294 | }
+      | ^
+compilation terminated.
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c:804:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccqQhDee.s: No space left on device
+  804 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.o] Error 1
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.o] Error 1
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c:1031:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccw9KQ0j.s: No space left on device
+ 1031 | }
+      | ^
+compilation terminated.
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c:509:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\cc1oClie.s: No space left on device
+  509 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.o] Error 1
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c:254:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\cc3Pq7Yj.s: No space left on device
+  254 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c:534:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccJhQLlt.s: No space left on device
+  534 | }
+      | ^
+compilation terminated.
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c:582:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccrUHlMo.s: No space left on device
+  582 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o] Error 1
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o] Error 1
+../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c:7556:1: fatal error: error writing to C:\Users\AW\AppData\Local\Temp\ccxR8Skf.s: No error
+ 7556 | }
+      | ^
+compilation terminated.
+make: *** [Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk:70: Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+15:10:06 Build Failed. 25 errors, 0 warnings. (took 2s.19ms)
+
