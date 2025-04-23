@@ -114,7 +114,7 @@ void FIS_PMSM_SpeedController_Init(FIS_System** fis)
 
     static FIS_Rule rules[] = {
         { rule0_indices, PID_PP, FIS_AND_MIN }, // if input(3) is mf_positive then PID_PP
-        { rule1_indices, PID_GA, FIS_AND_MIN }, // if input(3) is mf_negative then PID_GA
+        { rule1_indices, PID_GA, FIS_AND_MIN }, // if input(3) is mf_static then PID_GA
         { rule2_indices, PID_PP, FIS_AND_MIN }  // if input(3) is mf_negative then PID_PP
     };
 
